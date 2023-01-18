@@ -3,7 +3,9 @@ package com.example.weatherapp.presentation.components
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -15,9 +17,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.weatherapp.R
 import com.example.weatherapp.presentation.WeatherState
 import java.time.format.DateTimeFormatter
 
@@ -67,6 +73,29 @@ fun WeatherCard(
                     color = Color.White
                 )
                 Spacer(modifier = Modifier.height(32.dp))
+                Row(
+                    modifier = modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceAround
+                ) {
+                    WeatherDataRow(
+                        value = weatherData.pressure.toInt(),
+                        unit = "hpa",
+                        icon = ImageVector.vectorResource(id = R.drawable.ic_pressure),
+                        textStyle = TextStyle(Color.White)
+                    )
+                    WeatherDataRow(
+                        value = weatherData.humidity.toInt(),
+                        unit = "%",
+                        icon = ImageVector.vectorResource(id = R.drawable.ic_drop),
+                        textStyle = TextStyle(Color.White)
+                    )
+                    WeatherDataRow(
+                        value = weatherData.windSpeed.toInt(),
+                        unit = "km/h",
+                        icon = ImageVector.vectorResource(id = R.drawable.ic_wind),
+                        textStyle = TextStyle(Color.White)
+                    )
+                }
             }
         }
     }

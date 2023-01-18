@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
@@ -58,7 +59,8 @@ fun WeatherCard(
                 Spacer(modifier = modifier.height(16.dp))
                 Image(
                     painter = painterResource(id = weatherData.weatherType.iconRes),
-                    contentDescription = "Weather Type"
+                    contentDescription = "Weather Type",
+                    modifier = modifier.size(120.dp)
                 )
                 Spacer(modifier = modifier.height(16.dp))
                 Text(

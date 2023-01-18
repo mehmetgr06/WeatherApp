@@ -1,5 +1,7 @@
 package com.example.weatherapp.presentation.components
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.weatherapp.presentation.WeatherState
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun WeatherForecast(
     state: WeatherState,
@@ -34,7 +37,12 @@ fun WeatherForecast(
             Spacer(modifier = modifier.height(16.dp))
             LazyRow(content = {
                 items(data) { weatherData ->
-
+                    HourlyWeatherDisplay(
+                        weatherData = weatherData,
+                        modifier = modifier
+                            .height(100.dp)
+                            .padding(horizontal = 16.dp)
+                    )
                 }
             })
         }
